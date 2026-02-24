@@ -28,7 +28,19 @@
             background-blend-mode: luminosity;
             color: white;
         }
-
+        a {
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            padding-top: 50px; 
+            margin-right: 40px;
+            color: #bfbfbf;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+        }
         /* Wrapper principal que organiza os elementos verticalmente */
         .main-wrapper {
             height: 100%;
@@ -53,6 +65,7 @@
             height: auto;
             /* Uma sombra suave para destacar o logo do fundo */
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+            margin-top: -50px;
         }
 
         /* --- Área Central (Card) --- */
@@ -137,6 +150,9 @@
 </head>
 <body>
 
+    <nav>
+        <a href="login/testelogin.html">Sign IN/Sign UP</a>
+    </nav>
     <div class="main-wrapper">
 
         <header class="top-header">
