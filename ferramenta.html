@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIDA - Selecionar Imagem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset básico e fonte global */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Configuração do corpo para ocupar a tela toda */
+        body {
+            height: 100vh; /* Altura total da viewport */
+            width: 100%;
+            /* O degradê radial conforme a imagem original */
+            background: radial-gradient(circle at center, #1d9289 0%, #0e5e58 100%);
+
+            /* 1. Define a imagem de fundo */
+            background-image: url('FUNDO.png');
+            background-color: rgb(18, 115, 105, 30);
+            
+            /* 2. Impede que a imagem se repita */
+            background-repeat: no-repeat;
+            
+            /* 3. Garante que a imagem cubra toda a área, redimensionando sem sobrar espaços */
+            background-size: cover;
+            
+            /* 4. Centraliza a imagem (importante para manter o foco no meio em telas diferentes) */
+            background-position: center;
+            
+            /* 5. Mantém o fundo fixo ao rolar (opcional, mas fica elegante) */
+            background-attachment: fixed;
+            color: white;
+            overflow: hidden; /* Evita barras de rolagem indesejadas */
+        }
+
+        /* Wrapper principal que organiza os elementos verticalmente */
+        .main-wrapper {
+            height: 100%;
+            display: flex;
+            flex-direction: column; /* Empilha: Logo em cima, Resto embaixo */
+        }
+
+        /* --- Área do Logo (Topo) --- */
+        .top-header {
+            width: 100%;
+            padding-top: 50px; /* Espaço do topo da tela */
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            flex-shrink: 0; /* Garante que o logo não vai "amassar" se a tela for muito baixa */
+        }
+
+        .logo-aida {
+            /* Tamanho base para desktop. Ajuste se achar necessário */
+            max-width: 350px; 
+            width: 80%; /* Responsivo: ocupa 80% se a tela for menor que 350px */
+            height: auto;
+            /* Uma sombra suave para destacar o logo do fundo */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+        }
+
+        /* --- Área Central (Card) --- */
+        .center-stage {
+            /* O PULO DO GATO: Ocupa todo o espaço vertical restante */
+            flex-grow: 1; 
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center;     /* Centraliza verticalmente no espaço que sobrou */
+            padding-bottom: 50px;    /* Equilíbrio visual na parte inferior */
+        }
+
+        /* Estilo do Card */
+        .card-selecao {
+            background-color: rgba(0, 0, 0, 0.18); /* Fundo escuro transparente */
+            padding: 60px 80px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); /* Sombra difusa */
+            text-align: center;
+            max-width: 500px; /* Largura máxima para não ficar muito esticado em telas grandes */
+            width: 90%; /* Responsivo em telas menores */
+            backdrop-filter: blur(5px); /* Opcional: dá um efeito de vidro fosco sutil */
+        }
+
+        .texto-instrucao {
+            font-size: 1.25rem; /* Aumentei um pouco para destaque */
+            font-weight: 400;
+            margin-bottom: 35px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Estilo do Botão */
+        .btn-estilizado {
+            background-color: white;
+            color: #0e5e58; /* Cor do texto combinando com o tom mais escuro do fundo */
+            border: none;
+            padding: 15px 45px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease; /* Transição suave para o hover */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Efeitos de interação no botão */
+        .btn-estilizado:hover {
+            background-color: #f8f8f8;
+            transform: translateY(-3px); /* Levanta ligeiramente */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-estilizado:active {
+            transform: translateY(0); /* Volta ao normal ao clicar */
+        }
+
+        /* --- Responsividade (Celulares e Tablets pequenos) --- */
+        @media (max-width: 768px) {
+            .top-header {
+                padding-top: 30px; /* Menos espaço no topo em telas pequenas */
+            }
+
+            .logo-aida {
+                max-width: 220px; /* Logo menor no celular */
+            }
+
+            .card-selecao {
+                padding: 40px 30px; /* Card mais compacto */
+            }
+
+            .texto-instrucao {
+                font-size: 1.1rem;
+                margin-bottom: 25px;
+            }
+
+            .btn-estilizado {
+                padding: 12px 35px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+
+        <header class="top-header">
+            <img src="LOGO.png" alt="AIDA Logo" class="logo-aida">
+        </header>
+
+        <main class="center-stage">
+            <section class="card-selecao">
+                <p class="texto-instrucao">Selecione sua imagem...</p>
+                
+                <input type="file" id="inputFileBotao" accept="image/*" hidden>
+                
+                <button id="btnAcaoSelecionar" class="btn-estilizado">SELECIONAR</button>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        // Selecionar Imagem - Ferramenta
+        const btnAcao = document.getElementById('btnAcaoSelecionar');
+        const inputFile = document.getElementById('inputFileBotao');
+
+
+        btnAcao.addEventListener('click', () => {
+            inputFile.click();
+        });
+
+
+        inputFile.addEventListener('change', (event) => {
+            if (event.target.files.length > 0) {
+                const nomeArquivo = event.target.files[0].name;
+                console.log(`Arquivo selecionado: ${nomeArquivo}`);
+
+            }
+        });
+    </script>
+</body>
+</html>
