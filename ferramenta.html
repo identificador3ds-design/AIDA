@@ -19,25 +19,14 @@
             height: 100vh; /* Altura total da viewport */
             width: 100%;
             /* O degradê radial conforme a imagem original */
-            background: radial-gradient(circle at center, #1d9289 0%, #0e5e58 100%);
-
-            /* 1. Define a imagem de fundo */
-            background-image: url('FUNDO.png');
-            background-color: rgb(18, 115, 105, 30);
-            
-            /* 2. Impede que a imagem se repita */
+            background-color: #10403B;
+            background-image: url(./img/FUNDO.png);
             background-repeat: no-repeat;
-            
-            /* 3. Garante que a imagem cubra toda a área, redimensionando sem sobrar espaços */
             background-size: cover;
-            
-            /* 4. Centraliza a imagem (importante para manter o foco no meio em telas diferentes) */
             background-position: center;
-            
-            /* 5. Mantém o fundo fixo ao rolar (opcional, mas fica elegante) */
             background-attachment: fixed;
+            background-blend-mode: luminosity;
             color: white;
-            overflow: hidden; /* Evita barras de rolagem indesejadas */
         }
 
         /* Wrapper principal que organiza os elementos verticalmente */
@@ -152,7 +141,7 @@
     <div class="main-wrapper">
 
         <header class="top-header">
-            <img src="LOGO.png" alt="AIDA Logo" class="logo-aida">
+            <img src="./img/LogoBranca.png" alt="AIDA Logo" class="logo-aida">
         </header>
 
         <main class="center-stage">
