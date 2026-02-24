@@ -21,6 +21,16 @@ body {
     font-family: Afacad, arial, sans-serif;
     color: #4C5958;
     background: radial-gradient(#BFBFBF, #504f4f);
+
+    background-image: url(./img/FUNDO.png);
+    
+    background-repeat: no-repeat;
+
+    background-size: cover;
+    
+    background-position: center;
+    
+    background-attachment: fixed;
 }
 
 main {
