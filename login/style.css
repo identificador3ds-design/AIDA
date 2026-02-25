@@ -18,9 +18,8 @@ body {
 }
 .volta {
   position: absolute;
-  top: 40px;
-  left: 5%;
-  margin-left: 35px;
+  top: 10%;
+  left: 25%;
   z-index: 1000;
   width: 30px;
   height: 30px;
@@ -38,6 +37,7 @@ body {
 .card {
   position: relative;
   overflow: hidden;
+  margin-top: -500px;
   width: 660px;
   height: 440px;
   border-radius: 32px;
