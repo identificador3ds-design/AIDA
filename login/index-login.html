@@ -19,24 +19,28 @@
     <img class="logo logo-1" src="Group 1.png" alt="">
     <img class="logo logo-2" src="Group 1.png" alt="">
     <div class="form signin">
-      <form>
+
+    <form action="login.php" method="POST"> 
         <h2>Login</h2>
-        <input type="text" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <input type="email" name="email" placeholder="Email" required /> 
+        <input type="password" name="senha" placeholder="Password" required /> 
         <p>Esqueceu a senha?</p>
-        <button>SIGN IN</button>
+        <button type="submit">SIGN IN</button>
         <a onclick="toggleView()">Ainda não tem uma conta? <em>Sign up</em></a>
-      </form>
+    </form>
+
     </div>
     <div class="form signup active">
-      <form>
+
+    <form action="registro.php" method="POST">
         <h2>Registro</h2>
-        <input type="text" placeholder="Name" />
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button>SIGN UP</button>
+        <input type="text" name="nome" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="senha" placeholder="Password" required />
+        <button type="submit">SIGN UP</button>
         <a onclick="toggleView()">Já possui uma conta? <em>Sign in</em></a>
-      </form>
+    </form>
+
     </div>
   </div>
 
