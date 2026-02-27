@@ -28,13 +28,15 @@ header {
     z-index: 10;
     color: #BFBFBF;
 }
+
 .navbar {
     display: flex;
     gap: 20px;
     margin-left: 10%;
 }
+
 .ancoranav {
-    
+
     text-decoration: none;
     color: #BFBFBF;
     font-weight: bold;
@@ -77,12 +79,14 @@ header {
     border-radius: 0 0 16px 16px;
     margin-left: 4px;
 }
+
 .logout {
     filter:
         brightness(0) saturate(100%) invert(74%) sepia(4%) saturate(12%) hue-rotate(175deg) brightness(94%) contrast(89%);
-    width:25px;
+    width: 25px;
     height: 25px;
 }
+
 .dropa {
     text-decoration: none;
     color: #BFBFBF;
@@ -115,7 +119,7 @@ body {
     font-family: Afacad, arial, sans-serif;
     color: #4C5958;
     background: radial-gradient(#BFBFBF, #504f4f);
-    background-image: url(./img/FUNDO.png);
+    background-image: url(..//img/FUNDO.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -152,9 +156,10 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
+    z-index: 5;
+    /* Fica abaixo do footer quando ele aparecer */
     opacity: 0.8;
-
+    transition: opacity 0.3s ease;
 }
 
 .imgrpg {
@@ -244,7 +249,6 @@ section {
     transition: transform 0.35s ease;
 }
 
-/* === EFEITO DE CARD === */
 .icon-wrapper.active {
     background: white;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
@@ -256,14 +260,10 @@ section {
     transform: scale(1.15);
 }
 
-/* Hover extra (opcional) */
-
-
-/* Responsividade básica */
 @media (max-width: 768px) {
     .icons-section {
         justify-content: center;
-        /* centraliza no mobile */
+
     }
 
     .icons-grid {
@@ -272,28 +272,209 @@ section {
     }
 }
 
-.footer {
-    background-color: #10403b;
-    height: 60vh;
+
+
+.rolarpg {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30%;
+    z-index: 5;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
 }
-.aidafoot {
-    position: relative;
-    bottom: 25%;
-    left: 5%;
-    font-size: 2rem;
-}
-.div-title{
+
+.footer {
+    background-color: #10403b; 
+    min-height: 45vh;
     display: flex;
-    position: relative;
-    bottom: 90px;
-}
-.foot-content {
-    display: flexbox;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 60px 8%;
+    position: relative;
+    z-index: 10;
+    color: #BFBFBF; 
+    font-family: 'Afacad', sans-serif;
+}
+
+
+.footer-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+
+.foot-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.logo-footer {
+    width: 250px;
+    height: auto;
+    filter: brightness(0) saturate(100%) invert(74%) sepia(4%) saturate(12%) hue-rotate(175deg) brightness(94%) contrast(89%);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.logo-footer:hover {
+    transform: scale(1.08);
+}
+
+.foot-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 5px;
+    border-bottom: 2px solid rgba(191, 191, 191, 0.3);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.foot-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.foot-list li {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    cursor: default;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.foot-list li:hover {
+    opacity: 1;
+    color: #ffffff;
+    transform: translateX(10px); 
+}
+
+.footer-rights {
+    width: 100%;
+    border-top: 1px solid rgba(191, 191, 191, 0.15);
+    padding-top: 25px;
+    text-align: center;
+}
+
+.footer-rights p {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    opacity: 0.6;
+}
+
+@media (max-width: 900px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 50px;
+    }
+
+    .foot-column {
+        align-items: center;
+    }
+
+    .foot-list li:hover {
+        transform: scale(1.1); 
+    }
+
+    .logo-footer {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .logoaida {
+        position: static;
+        width: 80px;
+        height: auto;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .dropdown {
+        position: static;
+        transform: none;
+    }
+
+    .dropdown-content {
+        right: 20px;
+        margin-left: 0;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .title-tech {
+        top: 80px;
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    .rolarpg {
+        bottom: 30px;
+        right: 30px;
+    }
+
+    .imgrpg {
+        width: 100px;
+        height: 100px;
+    }
+
+    section {
+        margin-top: 50px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .icons-section {
+        justify-content: center;
+        padding: 10px;
+        min-height: auto;
+    }
+
+    .icons-grid {
+        margin-right: 0;
+        width: 100%;
+        max-width: 350px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .icon-wrapper {
+        border-radius: 12px;
+    }
+
+    .icon-wrapper img {
+        width: 50%;
+    }
+}
+
+
+@media (max-width: 380px) {
+    .icons-grid {
+        max-width: 280px;
+        gap: 8px;
+    }
 }
