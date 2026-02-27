@@ -55,7 +55,7 @@ header {
 
 .dropbtn {
     background: transparent;
-    color: #BFBFBF;
+    color: #ffffff;
     font-size: 1.5rem;
     font-family: Afacad;
     border: none;
@@ -82,14 +82,14 @@ header {
 
 .logout {
     filter:
-        brightness(0) saturate(100%) invert(74%) sepia(4%) saturate(12%) hue-rotate(175deg) brightness(94%) contrast(89%);
+        invert(100);
     width: 25px;
     height: 25px;
 }
 
 .dropa {
     text-decoration: none;
-    color: #BFBFBF;
+    color: #ffffff;
     font-size: 1.14rem;
     font-family: afacad;
     font-weight: bold;
