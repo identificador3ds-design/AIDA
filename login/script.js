@@ -53,17 +53,19 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     if (error) {
         mostrarAviso("Email ou senha inválidos.", "erro");
     } else {
-        const nomeUsuario = data.user.user_metadata.full_name;
-        localStorage.setItem('usuarioNome', nomeUsuario);
+
+        const nomeUsuario = data.user.user_metadata.full_name; 
+        localStorage.setItem('usuarioNome', nomeUsuario);     
         
         mostrarAviso(`Bem-vindo, ${nomeUsuario}!`);
         
         // REDIRECIONA PARA A TELA DE APRESENTAÇÃO
         setTimeout(() => {
             window.location.href = "../Tela-apresentação/index-apresentação.html";
-        }, 1500);
+        }, 1250);
     }
 });
+
 
 
 

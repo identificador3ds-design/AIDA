@@ -1,5 +1,29 @@
 gsap.registerPlugin(SplitText);
 
+// Coloque isto no topo do scripta.js
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Tenta recuperar o nome que o login guardou
+    const nomeSalvo = localStorage.getItem('usuarioNome');
+    const botaoUsuario = document.getElementById('nome-usuario');
+
+    console.log("Nome recuperado do localStorage:", nomeSalvo); // Para teste no F12
+
+    if (nomeSalvo && botaoUsuario) {
+        // 2. Muda o texto do botão
+        botaoUsuario.innerText = `Olá, ${nomeSalvo}`;
+        gsap.from("#nome-usuario", { opacity: 0, duration: 1, y: -10 });
+    } 
+
+    // 3. Lógica do botão Sair (Logout)
+    const btnSair = document.getElementById('btn-sair');
+    if (btnSair) {
+        btnSair.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('usuarioNome');
+            window.location.href = "../login/index-login.html";
+        });
+    }
+});
 
 let split = SplitText.create(".text", {
     type: "chars, words"
