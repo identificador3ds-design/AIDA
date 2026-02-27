@@ -89,4 +89,6 @@ section {
     padding: 20px;
     gap: 60px;
 }
-
+.text {
+    margin-bottom: 100px;
+}
