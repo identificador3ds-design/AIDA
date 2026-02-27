@@ -1,0 +1,160 @@
+/* Reset básico e fonte global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Configuração do corpo para ocupar a tela toda */
+body {
+    height: 100vh;
+    /* Altura total da viewport */
+    width: 100%;
+    /* O degradê radial conforme a imagem original */
+    background-color: #10403B;
+    background-image: url(./img/FUNDO.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: luminosity;
+    color: white;
+    overflow: hidden;
+}
+
+
+
+/* Wrapper principal que organiza os elementos verticalmente */
+.main-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* Empilha: Logo em cima, Resto embaixo */
+}
+
+/* --- Área do Logo (Topo) --- */
+.top-header {
+    width: 100%;
+    padding-top: 50px;
+    /* Espaço do topo da tela */
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    /* Garante que o logo não vai "amassar" se a tela for muito baixa */
+}
+
+.logo-aida {
+    /* Tamanho base para desktop. Ajuste se achar necessário */
+    max-width: 350px;
+    width: 80%;
+    /* Responsivo: ocupa 80% se a tela for menor que 350px */
+    height: auto;
+    /* Uma sombra suave para destacar o logo do fundo */
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+    margin-top: -50px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 90px;
+}
+
+/* --- Área Central (Card) --- */
+.center-stage {
+    /* O PULO DO GATO: Ocupa todo o espaço vertical restante */
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente no espaço que sobrou */
+    padding-bottom: 50px;
+    /* Equilíbrio visual na parte inferior */
+}
+
+/* Estilo do Card */
+.card-selecao {
+    background-color: rgba(0, 0, 0, 0.18);
+    /* Fundo escuro transparente */
+    padding: 60px 80px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    /* Sombra difusa */
+    text-align: center;
+    max-width: 500px;
+    /* Largura máxima para não ficar muito esticado em telas grandes */
+    width: 90%;
+    /* Responsivo em telas menores */
+    backdrop-filter: blur(5px);
+    /* Opcional: dá um efeito de vidro fosco sutil */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 200px;
+}
+
+.texto-instrucao {
+    font-size: 1.25rem;
+    /* Aumentei um pouco para destaque */
+    font-weight: 400;
+    margin-bottom: 35px;
+    letter-spacing: 0.5px;
+}
+
+/* Estilo do Botão */
+.btn-estilizado {
+    background: linear-gradient(135deg, #134943, #127369);
+    color: #c5dddb;
+    /* Cor do texto combinando com o tom mais escuro do fundo */
+    border: none;
+    padding: 15px 45px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Transição suave para o hover */
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
+    border: 0.1px solid #127369;
+}
+
+/* Efeitos de interação no botão */
+.btn-estilizado:hover {
+    transform: translateY(-3px);
+    /* Levanta ligeiramente */
+}
+
+.btn-estilizado:active {
+    transform: translateY(0);
+    /* Volta ao normal ao clicar */
+}
+
+/* --- Responsividade (Celulares e Tablets pequenos) --- */
+@media (max-width: 768px) {
+    .top-header {
+        padding-top: 30px;
+        /* Menos espaço no topo em telas pequenas */
+    }
+
+    .logo-aida {
+        max-width: 220px;
+        /* Logo menor no celular */
+    }
+
+    .card-selecao {
+        padding: 40px 30px;
+        /* Card mais compacto */
+    }
+
+    .texto-instrucao {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+    }
+
+    .btn-estilizado {
+        padding: 12px 35px;
+        font-size: 0.9rem;
+    }
+}
