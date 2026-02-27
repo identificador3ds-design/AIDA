@@ -3,65 +3,65 @@ const supabaseUrl = 'https://nwzijdudhemuibsyzpub.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53emlqZHVkaGVtdWlic3l6cHViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIwMjk5MTAsImV4cCI6MjA4NzYwNTkxMH0.aDHymYEKtyY5m2eaOHoBy4QRpaAvtafi_PVDtrL9gQc';
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-// Função para exibir mensagens na tela (Estilizada)
-const exibirMensagem = (texto, cor = "red") => {
-    const feedback = document.getElementById('mensagem-feedback');
-    feedback.innerText = texto;
-    feedback.style.color = cor;
-    // Limpa a mensagem após 5 segundos
-    setTimeout(() => { feedback.innerText = ""; }, 5000);
+// FUNÇÃO PARA MENSAGENS CUSTOMIZADAS
+const mostrarAviso = (texto, tipo = "sucesso") => {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast-msg ${tipo === "erro" ? "erro" : ""}`;
+    toast.innerText = texto;
+    
+    container.innerHTML = ""; // Limpa anterior
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.opacity = "0";
+        setTimeout(() => toast.remove(), 400);
+    }, 3000);
 };
 
-// --- LÓGICA DE REGISTRO ---
+// --- REGISTRO ---
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('regEmail').value;
     const password = document.getElementById('regPassword').value;
     const nome = document.getElementById('regName').value;
 
-    const { data: authData, error: authError } = await _supabase.auth.signUp({
-        email,
-        password,
+    const { data, error } = await _supabase.auth.signUp({
+        email, password,
         options: { data: { full_name: nome } }
     });
 
-    if (authError) {
-        exibirMensagem("Erro: " + authError.message);
-        return;
+    if (error) {
+        mostrarAviso("Erro no cadastro: " + error.message, "erro");
+    } else {
+        await _supabase.from('usuarios').insert([{ nome, email }]);
+        mostrarAviso("Cadastro finalizado! Faça seu login.");
+        
+        // REDIRECIONA PARA O LOGIN (Troca a aba)
+        setTimeout(() => { toggleView(); }, 2000); 
     }
-
-    // Salva na tabela 'usuarios'
-    await _supabase.from('usuarios').insert([{ nome, email }]);
-
-    exibirMensagem("Cadastro realizado! Faça login.", "#10403b");
-    
-    // REDIRECIONA: Muda a visão para a parte de login após 2 segundos
-    setTimeout(() => { toggleView(); }, 2000); 
 });
 
-// --- LÓGICA DE LOGIN ---
+// --- LOGIN ---
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const emailDigitado = document.getElementById('loginEmail').value;
-    const senhaDigitada = document.getElementById('loginPassword').value;
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
 
-    const { data, error } = await _supabase.auth.signInWithPassword({
-        email: emailDigitado,
-        password: senhaDigitada
-    });
+    const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
-        exibirMensagem("Erro no login: " + error.message);
+        mostrarAviso("Email ou senha inválidos.", "erro");
     } else {
         const nomeUsuario = data.user.user_metadata.full_name;
         localStorage.setItem('usuarioNome', nomeUsuario);
         
-        exibirMensagem("Sucesso! Entrando...", "#10403b");
+        mostrarAviso(`Bem-vindo, ${nomeUsuario}!`);
         
-        // REDIRECIONA: Vai para a tela seleciona.html
+        // REDIRECIONA PARA A TELA DE APRESENTAÇÃO
         setTimeout(() => {
-            window.location.href = "../seleciona.html";
-        }, 1000);
+            window.location.href = "../Tela-apresentação/index-apresentação.html";
+        }, 1500);
     }
 });
 
