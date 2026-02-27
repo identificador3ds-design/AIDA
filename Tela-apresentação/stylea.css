@@ -154,6 +154,7 @@ section {
         invert(12%) sepia(94%) saturate(1234%) hue-rotate(140deg) brightness(95%) contrast(92%);
     width: 15%;
     height: 15%;
+    
 
 }
 
@@ -179,7 +180,7 @@ section {
     padding: 50px;
     color: #081f1c;
     box-shadow:0 10px 30px #504f4f44;
-    text-shadow: 0 0 30px #504f4f;
+    text-shadow: 0 10px 30px #01010144;
     transition: transform 0.5s ease;
     backdrop-filter: blur(10px);
 }
