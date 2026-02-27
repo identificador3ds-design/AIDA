@@ -24,14 +24,14 @@ body {
   width: 30px;
   height: 30px;
   filter: 
-    brightness(0) 
-    saturate(100%) 
-    invert(74%) 
-    sepia(4%) 
-    saturate(12%) 
-    hue-rotate(175deg) 
-    brightness(94%) 
-    contrast(89%);
+  brightness(0) 
+  saturate(100%) 
+  invert(74%) 
+  sepia(4%) 
+  saturate(12%) 
+  hue-rotate(175deg) 
+  brightness(94%) 
+  contrast(89%);
   cursor: pointer;
 }
 .card {
