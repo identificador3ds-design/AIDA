@@ -275,4 +275,25 @@ section {
 .footer {
     background-color: #10403b;
     height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30%;
+}
+.aidafoot {
+    position: relative;
+    bottom: 25%;
+    left: 5%;
+    font-size: 2rem;
+}
+.div-title{
+    display: flex;
+    position: relative;
+    bottom: 90px;
+}
+.foot-content {
+    display: flexbox;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
