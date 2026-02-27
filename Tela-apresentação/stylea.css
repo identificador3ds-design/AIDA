@@ -316,6 +316,12 @@ section {
     gap: 12px;
 }
 
+li a {
+    text-decoration: none;
+    color: #BFBFBF; 
+    font-family: 'Afacad', sans-serif;
+}
+
 
 .logo-footer {
     width: 250px;
