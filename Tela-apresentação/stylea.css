@@ -56,7 +56,7 @@ header {
 .dropbtn {
     background: transparent;
     color: #ffffff;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-family: Afacad;
     border: none;
     font-weight: bold;
@@ -112,7 +112,7 @@ header {
     top: 9%;
     left: 1%;
     filter:
-    brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(100%) hue-rotate(175deg) brightness(100%) contrast(100%);
+        brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(100%) hue-rotate(175deg) brightness(100%) contrast(100%);
 }
 
 body {
@@ -154,7 +154,7 @@ section {
         invert(12%) sepia(94%) saturate(1234%) hue-rotate(140deg) brightness(95%) contrast(92%);
     width: 15%;
     height: 15%;
-    
+
 
 }
 
@@ -179,21 +179,23 @@ section {
     border-radius: 16px;
     padding: 50px;
     color: #081f1c;
-    box-shadow:0 10px 30px #504f4f44;
+    box-shadow: 0 10px 30px #504f4f44;
     text-shadow: 0 10px 30px #01010144;
     transition: transform 0.5s ease;
     backdrop-filter: blur(10px);
 }
-.sobre-card:hover{
+
+.sobre-card:hover {
     transform: scale(1.02);
-    
+
 }
-.func-card{
+
+.func-card {
     background: linear-gradient(135deg #e2dfdf, #dbd8d8);
     border-radius: 60%;
     padding: 50px;
     color: #081f1c;
-    box-shadow:0 10px 30px #504f4f44;
+    box-shadow: 0 10px 30px #504f4f44;
     text-shadow: 0 10px 30px #01010144;
     transition: transform 0.5s ease;
     backdrop-filter: blur(10px);
@@ -202,7 +204,8 @@ section {
     width: 250px;
     height: 250px;
 }
-.title-func{
+
+.title-func {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,6 +215,7 @@ section {
     font-size: 3rem;
     margin-top: 9%;
 }
+
 .subtitle-func {
     display: flex;
     justify-content: center;
@@ -222,14 +226,17 @@ section {
     margin-top: 5%;
     font-size: 2rem;
 }
+
 .info-func img {
     margin: 5px 0 10px 55px;
     width: 25%;
     height: 25%;
 }
-.func-card:hover{
+
+.func-card:hover {
     transform: scale(1.04);
 }
+
 .card-func {
     display: flex;
     justify-content: center;
@@ -240,6 +247,7 @@ section {
     left: 40%;
     transform: translateX(-35%);
 }
+
 .number {
     display: flex;
     justify-content: center;
@@ -249,6 +257,7 @@ section {
     opacity: 0.2;
     font-weight: bold;
 }
+
 .number2 {
     display: flex;
     justify-content: center;
@@ -258,34 +267,24 @@ section {
     opacity: 0.2;
     font-weight: bold;
 }
-.rolarpg {
-    position: fixed;
-    bottom: 60px;
-    right: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 5;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
+
 
 .imgrpg {
-    width: 180px;
-    height: 180px;
+    width: 150px; 
+    height: auto;
     animation: rolar 12s linear infinite;
-
 }
 
 .seta {
-
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #4C5958;
-
-
+}
+.seta img {
+    width: 30px; 
+    height: auto;
 }
 
 @keyframes rolar {
@@ -385,41 +384,63 @@ section {
 
 .rolarpg {
     position: fixed;
-    bottom: 60px;
-    right: 60px;
+    bottom: 40px;
+    right: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 5;
     opacity: 0.8;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease; 
 }
 
+@media (max-width: 1024px) {
+    .rolarpg { bottom: 30px; right: 30px; }
+    .imgrpg { width: 120px; }
+}
+
+@media (max-width: 768px) {
+    .rolarpg { bottom: 20px; right: 20px; }
+    .imgrpg { width: 90px; }
+    .seta img { width: 20px; }
+}
+
+.gsap-reveal {
+    visibility: visible !important;
+}
+.rolarpg.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
 .title-equipe {
     font-size: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 100%;
+    left: 5%;
     position: relative;
-    left: 55%;
-    transform: translateX(-50%);
-    top: 12%;
 }
 
 .team-grid {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-wrap: nowrap;
     padding: 2rem;
-    position: relative;
+    width: 90%;
+    margin: 0 auto;
     left: 5%;
-    top: 20%;
+    position: relative;
 }
 
 .team-card {
     position: relative;
-    width: 280px;
+    flex: 1 1 280px;
+    max-width: 300px;
+    min-width: 150px;
     height: 380px;
     overflow: hidden;
     border-radius: 16px;
@@ -443,7 +464,6 @@ section {
 .team-card:hover img {
     transform: scale(1.08);
     filter: brightness(0.65);
-    /* escurece um pouco mais na hora do hover */
 }
 
 .overlay {
@@ -487,6 +507,61 @@ section {
     opacity: 0.9;
     font-weight: 400;
 }
+.titleferr{
+    font-size: 3rem;
+    margin-bottom: 50px;
+}
+.subtitleferr{
+    font-size: 1.5rem;
+}
+.contentferr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 100px;
+}
+
+.btnferr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 4%;
+    margin-top: 150px;
+}
+.ancoraferr {
+    text-decoration: none;
+}
+
+.btnferra {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    border: none;
+    border-radius: 48px;
+    background: linear-gradient(130deg, #081f1c, #10403b);
+    color: #fff;
+    padding: 16px 30px;
+    font-size: 1.2rem;
+    font-family: 'Afacad', sans-serif;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.setabtn {
+    transform: rotate(180deg);
+    width: 24px;
+    height: auto;
+    display: block;
+    filter: brightness(1000px);
+}
+
+.btnferra:hover {
+    transform: scale(1.05);
+}
 
 .footer {
     background-color: #10403b;
@@ -520,7 +595,7 @@ section {
 
 li a {
     text-decoration: none;
-    color: #BFBFBF; 
+    color: #BFBFBF;
     font-family: 'Afacad', sans-serif;
 }
 
@@ -580,10 +655,34 @@ li a {
     opacity: 0.6;
 }
 
-@media (hover: none) {
-    .team-card:active .info {
-        transform: translateY(0);
-        opacity: 1;
+@media (max-width: 768px) {
+    .team-grid {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .team-card {
+        flex: 1 1 140px;
+        max-width: 45%;
+        height: 250px;
+    }
+
+    .info h3 {
+        font-size: 1.1rem;
+    }
+
+    .info p {
+        font-size: 0.9rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .team-card {
+        max-width: 100%;
+        flex: 1 1 100%;
+        height: 320px;
     }
 }
 

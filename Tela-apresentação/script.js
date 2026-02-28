@@ -95,3 +95,19 @@ function loop() {
 }
 
 loop();
+
+
+window.addEventListener('scroll', function() {
+    const scrollIcon = document.querySelector('.rolarpg');
+    const targetSection = document.querySelector('#ferramentaaida');
+    
+    // Pega a posição do topo da seção da ferramenta em relação à janela
+    const sectionPos = targetSection.getBoundingClientRect().top;
+    
+    // Se o topo da seção estiver visível ou acima do meio da tela, esconde o ícone
+    if (sectionPos < window.innerHeight * 0.8) {
+        scrollIcon.classList.add('hidden');
+    } else {
+        scrollIcon.classList.remove('hidden');
+    }
+});
