@@ -22,15 +22,35 @@
 
 body {
     font-family: Afacad, arial, sans-serif;
-    color: #4C5958;
-    background: radial-gradient(#BFBFBF, #504f4f);
-    background-image: url(./img/FUNDO.png);
+    color: white;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Sua imagem original */
+    background-image: url(./img/FundoAlternativo.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    overflow: hidden;
-}
+    
+    /* O efeito de desfoque */
+    filter: blur(5px); 
+    
+    /* Aumenta a escala levemente para evitar bordas brancas causadas pelo blur */
+    transform: scale(1.1);
+    
+    /* Garante que o fundo fique atrás do conteúdo */
+    z-index: -1; 
+}   
 
 a {
     display: flex;
@@ -54,7 +74,7 @@ a {
     top: 70%;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg, #134943, #127369);
+    background: linear-gradient(135deg, #10403B, #0f5c54);
     padding: 15px 45px;
     border-radius: 32px;
     box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
@@ -91,5 +111,34 @@ section {
 }
 .text {
     margin-bottom: 100px;
+}
+
+
+
+@media (max-width: 480px) {
+    img {
+        max-width: 400px;
+    }  
+}
+
+@media (max-width: 900px) {
+
+}
+
+@media (max-width: 580px) {
+    img {
+        max-width: 450px;
+    }  
+
+    .text {
+        font-size: 1.5rem;
+    }
+}
+
+
+@media (max-width: 380px) {
+    img {
+        max-width: 400px;
+    }  
 }
 
