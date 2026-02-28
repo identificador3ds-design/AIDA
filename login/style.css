@@ -306,6 +306,7 @@ form button {
 .toast-msg.erro {
   background: #8b2525; /* Vermelho escuro para erros */
   border-color: #ff4d4d;
+  color: wheat;
 }
 
 @keyframes slideDown {
