@@ -159,7 +159,7 @@ section {
 }
 
 .text {
-    font-size: 2.5rem;
+    font-size: 4rem;
 }
 
 .subtitle {
@@ -188,7 +188,76 @@ section {
     transform: scale(1.02);
     
 }
-
+.func-card{
+    background: linear-gradient(135deg #e2dfdf, #dbd8d8);
+    border-radius: 60%;
+    padding: 50px;
+    color: #081f1c;
+    box-shadow:0 10px 30px #504f4f44;
+    text-shadow: 0 10px 30px #01010144;
+    transition: transform 0.5s ease;
+    backdrop-filter: blur(10px);
+    max-width: 300px;
+    max-height: 300px;
+    width: 250px;
+    height: 250px;
+}
+.title-func{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 55%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    margin-top: 9%;
+}
+.subtitle-func {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 55%;
+    transform: translateX(-50%);
+    margin-top: 5%;
+    font-size: 2rem;
+}
+.info-func img {
+    margin: 5px 0 10px 55px;
+    width: 25%;
+    height: 25%;
+}
+.func-card:hover{
+    transform: scale(1.04);
+}
+.card-func {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    top: 20%;
+    left: 40%;
+    transform: translateX(-35%);
+}
+.number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 31px;
+    font-size: 1.5rem;
+    opacity: 0.2;
+    font-weight: bold;
+}
+.number2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 11px;
+    font-size: 1.5rem;
+    opacity: 0.2;
+    font-weight: bold;
+}
 .rolarpg {
     position: fixed;
     bottom: 60px;
@@ -236,6 +305,7 @@ section {
     align-items: center;
     position: relative;
     top: 200px;
+    font-size: 3rem;
 
 }
 
@@ -326,7 +396,7 @@ section {
 }
 
 .title-equipe {
-    font-size: 4rem;
+    font-size: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
