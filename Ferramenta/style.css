@@ -8,56 +8,46 @@
 
 /* Configuração do corpo para ocupar a tela toda */
 body {
-    height: 100vh;
-    /* Altura total da viewport */
-    width: 100%;
-    /* O degradê radial conforme a imagem original */
-    background-color: #10403B;
-    background-image: url(./img/FUNDO.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-blend-mode: luminosity;
-    color: white;
-    overflow: hidden;
+  margin: 0;
+  background: #0c2f2b;
+  color: white;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+
+  background-image: url(../img/FundoVerde.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 
 
 /* Wrapper principal que organiza os elementos verticalmente */
 .main-wrapper {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    /* Empilha: Logo em cima, Resto embaixo */
+    align-items: center;
+    justify-content: center; /* Centraliza o bloco todo verticalmente */
+    min-height: 100vh; /* Garante que ocupe a altura total da tela */
+    width: 100%;
 }
 
 /* --- Área do Logo (Topo) --- */
 .top-header {
     width: 100%;
-    padding-top: 50px;
-    /* Espaço do topo da tela */
-    padding-bottom: 20px;
     display: flex;
     justify-content: center;
-    flex-shrink: 0;
-    /* Garante que o logo não vai "amassar" se a tela for muito baixa */
+    margin-bottom: 20px; /* Espaço entre o logo e o card */
 }
 
 .logo-aida {
-    /* Tamanho base para desktop. Ajuste se achar necessário */
-    max-width: 350px;
-    width: 80%;
-    /* Responsivo: ocupa 80% se a tela for menor que 350px */
+    padding-top: 20px;
+    width: 350px; /* Tamanho original que você queria */
     height: auto;
-    /* Uma sombra suave para destacar o logo do fundo */
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
-    margin-top: -50px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 90px;
+    /* Remova: position, top, left, transform e margin-top */
 }
 
 /* --- Área Central (Card) --- */
@@ -76,22 +66,15 @@ body {
 /* Estilo do Card */
 .card-selecao {
     background-color: rgba(0, 0, 0, 0.18);
-    /* Fundo escuro transparente */
-    padding: 60px 80px;
+    padding: 60px 80px; /* Seus valores originais */
     border-radius: 25px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-    /* Sombra difusa */
     text-align: center;
-    max-width: 500px;
-    /* Largura máxima para não ficar muito esticado em telas grandes */
-    width: 90%;
-    /* Responsivo em telas menores */
+    width: 500px; /* Forçamos a largura original */
+    max-width: 90%; /* Segurança para telas pequenas */
     backdrop-filter: blur(5px);
-    /* Opcional: dá um efeito de vidro fosco sutil */
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 300px;
+    
+    /* Remova: position, top, left e transform */
 }
 
 .texto-instrucao {

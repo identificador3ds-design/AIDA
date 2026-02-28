@@ -11,6 +11,12 @@ body {
   place-items: center;
   overflow: hidden;
   font-family: "Euclid Circular B", "Poppins";
+
+  background-image: url(../img/FundoVerde.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 :root {
