@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIDA - Análise da Imagem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <header class="top-header">
+            <a href="../index.html"><img src="../img/LogoBranca.png" alt="AIDA Logo" class="logo-aida"></a>
+        </header>
+
+        <main class="center-stage">
+            <section class="card-analise">
+                
+                <div class="container-imagem">
+                    <img id="imagemPreview" src="#" alt="Sua imagem selecionada" class="imagem-preview" hidden>
+                    <div id="placeholderImagem" class="placeholder-visual"></div>
+                </div>
+
+                <div class="container-controles">
+                    
+                    <div class="grupo-input">
+                        <label for="tipoImagem" class="rotulo-input">Tipo de Imagem:</label>
+                        <input type="text" id="tipoImagem" class="campo-estilizado" placeholder="Ex: Fotografia, Arte Digital...">
+                    </div>
+
+                    <div class="grupo-input">
+                        <label for="metodoAnalise" class="rotulo-input">Método:</label>
+                        <select id="metodoAnalise" class="campo-estilizado campo-select">
+                            <option value="" disabled selected>Selecione um método...</option>
+                            <option value="FFT">FFT</option>
+                            <option value="PSEM">PSEM</option>
+                            <option value="consistencia">Consistência Visual</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-botoes">
+                        <button id="btnVerificar" class="btn-estilizado btn-primario">VERIFICAR</button>
+                        <a href="../Ferramenta/index-seleciona.html" class="ancora-botao">
+                            <button id="btnTrocar" class="btn-estilizado btn-secundario">TROCAR</button>
+                        </a>
+                    </div>
+
+                </div>
+
+            </section>
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
