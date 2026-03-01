@@ -27,12 +27,21 @@ header {
     position: fixed;
     z-index: 10;
     color: #BFBFBF;
+    
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Curva de animação mais elegante */
+}
+
+
+.header-hidden {
+    transform: translateY(-100%); /* Esconde o header para cima */
 }
 
 .navbar {
     display: flex;
-    gap: 20px;
-    margin-left: 10%;
+    justify-content: center; 
+    gap: 60px; 
+    margin-left: 0; 
+    width: 100%;
 }
 
 .ancoranav {
@@ -136,13 +145,11 @@ header {
 }
 
 .logoaida {
-    width: 10%;
-    height: 70%;
+    width: 15%;
+    height: 60%;
     position: absolute;
-    top: 9%;
+    top: 17%;
     left: 1%;
-    filter:
-        brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(100%) hue-rotate(175deg) brightness(100%) contrast(100%);
 }
 
 body {

@@ -111,3 +111,27 @@ window.addEventListener('scroll', function() {
         scrollIcon.classList.remove('hidden');
     }
 });
+
+const header = document.querySelector('header');
+    let lastScroll = 0;
+    
+    // Altere este valor (em pixels) para decidir o quão perto 
+    // do topo a pessoa deve estar para o header reaparecer
+    const limiarDoTopo = 250; 
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        // 1. Se estiver descendo, esconde o header
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            header.classList.add('header-hidden');
+        } 
+        
+        // 2. Só remove a classe 'header-hidden' se o scroll for menor que o limiar
+        // Ou seja: ele só reaparece quando estiver chegando no topo
+        if (currentScroll < limiarDoTopo) {
+            header.classList.remove('header-hidden');
+        }
+
+        lastScroll = currentScroll;
+});
