@@ -36,12 +36,42 @@ header {
 }
 
 .ancoranav {
-
     text-decoration: none;
     color: white;
     font-weight: bold;
     font-size: 1.2rem;
     margin-top: 28px;
+    position: relative; 
+    display: inline-block;
+    transition: color 0.3s linear;
+}
+
+.ancoranav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px; 
+    width: 100%;
+    height: 2px; 
+    background-color: #8aa6a3; 
+    
+    transform: scaleX(0);
+    transform-origin: right; 
+    
+    transition: transform 0.2s linear; 
+}
+
+.ancoranav:hover {
+    color: #8aa6a3;
+}
+
+.ancoranav:hover::after {
+    transform: scaleX(1); 
+    transform-origin: left; 
+}
+
+.ancoranav.active::after {
+    transform: scaleX(1);
 }
 
 .dropdown {
@@ -56,7 +86,7 @@ header {
 .dropbtn {
     background: transparent;
     color: #ffffff;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: Afacad;
     border: none;
     font-weight: bold;
