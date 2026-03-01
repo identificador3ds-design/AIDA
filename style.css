@@ -118,11 +118,11 @@ section {
 @media (max-width: 480px) {
     img {
         max-width: 400px;
-    }  
-}
-
-@media (max-width: 900px) {
-
+    } 
+    
+    .text {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 580px) {
@@ -133,12 +133,5 @@ section {
     .text {
         font-size: 1.5rem;
     }
-}
-
-
-@media (max-width: 380px) {
-    img {
-        max-width: 400px;
-    }  
 }
 
