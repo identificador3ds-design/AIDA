@@ -1,4 +1,3 @@
-/* Reset básico e fonte global (reaproveitado do original) */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +5,6 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Configuração do corpo (reaproveitado do original) */
 body {
   margin: 0;
   background: #0c2f2b;
@@ -22,7 +20,6 @@ body {
   background-attachment: fixed;
 }
 
-/* Wrapper principal (reaproveitado do original) */
 .main-wrapper {
     display: flex;
     flex-direction: column;
@@ -32,7 +29,6 @@ body {
     width: 100%;
 }
 
-/* --- Área do Logo (Topo - Reaproveitado) --- */
 .top-header {
     width: 100%;
     display: flex;
@@ -42,54 +38,52 @@ body {
 
 .logo-aida {
     padding-top: 20px;
-    width: 280px; /* Tamanho reduzido para equilibrar com o card maior */
+    width: 280px; 
     height: auto;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
 
-/* --- Área Central (Card de Análise) --- */
 .center-stage {
     flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 30px; /* Menor espaço inferior para card maior */
+    padding-bottom: 30px; 
 }
 
-/* Estilo do Card de Análise (Baseado no modelo do Figma) */
 .card-analise {
-    background-color: rgba(0, 0, 0, 0.25); /* Fundo ligeiramente mais escuro que o anterior */
+    background-color: rgba(0, 0, 0, 0.25);
     padding: 50px;
     border-radius: 25px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-    text-align: left; /* Alinhamento à esquerda para os inputs */
-    width: 900px; /* Largura maior para acomodar as duas colunas */
-    max-width: 95%; /* Segurança para telas pequenas */
-    backdrop-filter: blur(10px); /* Mais blur para o card maior */
+    text-align: left;
+    width: 900px; 
+    max-width: 95%; 
+    backdrop-filter: blur(10px); 
     
-    display: flex; /* Flexbox para criar as duas colunas */
-    gap: 60px; /* Espaço entre a imagem e os controles */
-    align-items: center; /* Centraliza verticalmente o conteúdo interno */
+    display: flex; 
+    gap: 60px; 
+    align-items: center;
 }
 
 /* --- Coluna da Imagem (Esquerda) --- */
 .container-imagem {
-    flex: 1; /* Ocupa metade do espaço */
+    flex: 1; 
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.05); /* Área sutil para a imagem */
+    background-color: rgba(255, 255, 255, 0.05); 
     border-radius: 15px;
-    height: 350px; /* Altura fixa para a área da imagem */
-    overflow: hidden; /* Garante que a imagem não saia da borda */
-    border: 2px dashed rgba(255, 255, 255, 0.1); /* Borda decorativa estilo placeholder */
+    height: 350px;
+    overflow: hidden; 
+    border: 2px dashed rgba(255, 255, 255, 0.1); 
 }
 
 .imagem-preview {
     max-width: 100%;
     max-height: 100%;
     border-radius: 20px;
-    object-fit: contain; /* Mantém a proporção da imagem sem cortar */
+    object-fit: contain; 
 }
 
 .placeholder-visual {
@@ -97,18 +91,16 @@ body {
     height: 80px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
-    /* Pode adicionar um ícone de imagem aqui via background-image se quiser */
 }
 
 /* --- Coluna dos Controles (Direita) --- */
 .container-controles {
-    flex: 1; /* Ocupa a outra metade do espaço */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Espaço entre os blocos de input e botões */
+    gap: 30px; 
 }
 
-/* Estilo dos Grupos de Input */
 .grupo-input {
     display: flex;
     flex-direction: column;
@@ -118,7 +110,7 @@ body {
 .rotulo-input {
     font-size: 1rem;
     font-weight: 600;
-    color: #c5dddb; /* Tom mais claro baseado na paleta */
+    color: #c5dddb; 
 }
 
 .campo-estilizado {
@@ -133,23 +125,22 @@ body {
 
 .campo-estilizado:focus {
     outline: none;
-    border-color: #127369; /* Cor de destaque ao focar */
+    border-color: #127369; 
     background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* Estilo específico para o Select */
 .campo-select {
-    appearance: none; /* Remove o estilo padrão do navegador */
+    appearance: none;
     -webkit-appearance: none;
     cursor: pointer;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23c5dddb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>'); /* Seta customizada */
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23c5dddb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>');
     background-repeat: no-repeat;
     background-position: right 15px center;
     background-size: 15px;
-    padding-right: 40px; /* Espaço para a seta */
+    padding-right: 40px;
 }
 
-/* Cor das opções do select (necessário para alguns navegadores) */
 .campo-select option {
     background-color: #0c2f2b;
     color: white;
@@ -163,9 +154,8 @@ body {
     margin-top: 10px;
 }
 
-/* Estilo Base do Botão (Reaproveitado do original) */
 .btn-estilizado {
-    width: 100%; /* Botões ocupam a largura total da coluna */
+    width: 100%; 
     border: none;
     padding: 15px 20px;
     border-radius: 12px;
@@ -191,7 +181,7 @@ body {
 
 /* Botão Secundário (TROCAR) - Baseado no modelo do Figma */
 .btn-secundario {
-    background: rgba(255, 255, 255, 0.08); /* Fundo sutil */
+    background: rgba(255, 255, 255, 0.08);
     color: #c5dddb;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -201,7 +191,6 @@ body {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Ajuste para o botão que está dentro de uma âncora */
 .ancora-botao {
     text-decoration: none;
     width: 100%;
@@ -211,7 +200,6 @@ body {
     transform: translateY(0);
 }
 
-/* Container das notificações */
 #toast-container {
     position: fixed;
     top: 20px;
@@ -257,7 +245,7 @@ body {
 /* --- Responsividade (Celulares e Tablets) --- */
 @media (max-width: 900px) {
     .card-analise {
-        flex-direction: column; /* Empilha as colunas verticalmente */
+        flex-direction: column; 
         padding: 40px;
         width: 500px;
         max-width: 90%;
@@ -266,7 +254,7 @@ body {
 
     .container-imagem {
         width: 100%;
-        height: 300px; /* Altura reduzida no mobile */
+        height: 300px; 
     }
 
     .container-controles {
