@@ -1,74 +1,56 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import cv2
-import numpy as np
 import base64
-import io
-import matplotlib.pyplot as plt
+
+from metadados import verificar_ia_nos_metadados
+from fft import executar_analise_completa_fft
+from marca_dagua import verificar_marca_dagua # <-- NOVO IMPORT AQUI
 
 app = Flask(__name__)
-CORS(app) # Importante: permite que o JS em outra pasta acesse o servidor
-
-# Funções extraídas do seu fft.py
-def calcular_fft_espectro(imagem_cinza):
-    f = np.fft.fft2(imagem_cinza)
-    fshift = np.fft.fftshift(f)
-    magnitude = np.abs(fshift)
-    magnitude_log = np.log1p(magnitude)
-    return fshift, magnitude, magnitude_log
-
-def separar_regioes_frequencia(shape, raio):
-    h, w = shape
-    centro = (h // 2, w // 2)
-    Y, X = np.ogrid[:h, :w]
-    dist_centro = np.sqrt((X - centro[1])**2 + (Y - centro[0])**2)
-    mascara_baixas = dist_centro <= raio
-    return mascara_baixas, ~mascara_baixas
-
-def calcular_metricas(magnitude, mascara):
-    regiao = magnitude[mascara]
-    return np.sum(regiao), np.sum(regiao**2)
+CORS(app)
 
 @app.route('/analisar', methods=['POST'])
 def analisar():
     try:
         data = request.json
-        # O script.js enviará a imagem do localStorage aqui
-        image_b64 = data.get('imagem').split(",")[1]
+        image_full_b64 = data.get('imagem')
+        image_b64_data = image_full_b64.split(",")[1]
+        img_bytes = base64.b64decode(image_b64_data)
+
+        # ---------------------------------------------------------
+        # PASSO 1: Marca d'Água Visual
+        # ---------------------------------------------------------
+        foi_detectado_marca, nome_ia_marca = verificar_marca_dagua(img_bytes)
+
+        if foi_detectado_marca:
+            return jsonify({
+                "status": "sucesso",
+                "imagem_fft": image_full_b64, 
+                "probabilidade": "100% (Confirmado)",
+                "energia": "N/A (Marca Visual)",
+                "metodo": f"Detecção Visual ({nome_ia_marca})"
+            })
         
-        # Converte para OpenCV
-        img_bytes = base64.b64decode(image_b64)
-        np_img = np.frombuffer(img_bytes, np.uint8)
-        img = cv2.imdecode(np_img, cv2.IMREAD_GRAYSCALE)
+        # ---------------------------------------------------------
+        # PASSO 2: Metadados
+        # ---------------------------------------------------------
+        foi_detectado_meta, nome_ia_meta = verificar_ia_nos_metadados(img_bytes)
 
-        # Processamento FFT
-        fshift, magnitude, magnitude_log = calcular_fft_espectro(img)
-        h, w = img.shape
-        raio = min(h, w) // 4
-        _, masc_altas = separar_regioes_frequencia((h, w), raio)
-        _, energia_altas = calcular_metricas(magnitude, masc_altas)
+        if foi_detectado_meta:
+            return jsonify({
+                "status": "sucesso",
+                "imagem_fft": image_full_b64, 
+                "probabilidade": "100% (Confirmado)",
+                "energia": "N/A (Assinatura Digital)",
+                "metodo": f"Detecção por Metadados ({nome_ia_meta})"
+            })
 
-        # Gera o gráfico para exibir no index-analise.html
-        plt.figure(figsize=(5, 5))
-        plt.imshow(magnitude_log, cmap='gray')
-        plt.axis('off')
-        
-        buf = io.BytesIO()
-        plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0)
-        buf.seek(0)
-        plot_b64 = base64.b64encode(buf.read()).decode('utf-8')
-        plt.close()
+        # ---------------------------------------------------------
+        # PASSO 3: Se não encontrou nada explícito, segue para o FFT
+        # ---------------------------------------------------------
+        resultado_fft = executar_analise_completa_fft(img_bytes)
+        return jsonify(resultado_fft)
 
-        # Cálculo de probabilidade simplificado para o TCC
-        # Ajuste o divisor (1e12) conforme seus testes com imagens reais vs IA
-        prob = min(99.9, (energia_altas / 1e12) * 100) 
-
-        return jsonify({
-            "status": "sucesso",
-            "imagem_fft": f"data:image/png;base64,{plot_b64}",
-            "probabilidade": f"{prob:.1f}%",
-            "energia": f"{energia_altas:.2e}"
-        })
     except Exception as e:
         return jsonify({"status": "erro", "mensagem": str(e)}), 500
 
