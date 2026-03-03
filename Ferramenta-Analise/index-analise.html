@@ -17,7 +17,7 @@
             <a href="../index.html"><img src="../img/LogoBranca.png" alt="AIDA Logo" class="logo-aida"></a>
         </header>
 
-        <main class="center-stage">
+        <main class="center-stage" style="flex-direction: column; gap: 30px; align-items: center;">
             <section class="card-analise">
                 
                 <div class="container-imagem">
@@ -52,6 +52,37 @@
                 </div>
 
             </section>
+
+            <div id="loading" style="display: none; text-align: center; margin: 20px 0;">
+                <div class="spinner"></div>
+                <p style="margin-top: 15px; color: #c5dddb; font-weight: 600;">Analisando padrões de IA...</p>
+            </div>
+
+            <section id="areaResultado" class="card-resultado" style="display: none;">
+                <div class="resultado-header">
+                    <h2 class="titulo-resultado">Resultado da Análise</h2>
+                    <div class="badge-ia">Probabilidade IA: <span id="porcentagemIA">0%</span></div>
+                </div>
+
+                <div class="resultado-corpo-vertical">
+                    <div class="container-imagem-processada">
+                        <p class="rotulo-input">Imagem Processada:</p>
+                        <img id="imagemProcessada" src="#" alt="Resultado" class="imagem-preview">
+                    </div>
+
+                    <div class="container-explicacao">
+                        <h3 id="tituloMetodo" style="color: #c5dddb; margin-bottom: 10px;">Sobre o Método</h3>
+                        <p id="textoMetodo" style="margin-bottom: 20px;">Aguardando processamento...</p>
+                        
+                        <div class="exemplos-metodo">
+                            <div class="placeholder-exemplo">Exemplo 1</div>
+                            <div class="placeholder-exemplo">Exemplo 2</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
         </main>
 
     </div>
