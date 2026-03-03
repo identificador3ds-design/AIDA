@@ -124,6 +124,8 @@ html {
     border: none;
     min-width: 80px;
     min-height: 36px;
+    font-weight: bold;
+    font-family: afacad;
 }
 
 
@@ -136,13 +138,14 @@ html {
     position: absolute;
     background-color: #0c312e;
     height: 45px;
-    width: 100px;
+    width: 130px;
     padding: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 0 0 16px 16px;
     margin-left: 4px;
     margin-top: 30px;
+    
 }
 
 .logout {
@@ -160,8 +163,8 @@ html {
     font-weight: bold;
     position: absolute;
     display: flex;
-    gap: 10px;
-    margin-left: 5px;
+    gap: 5px;
+    
 }
 
 .dropdown:hover .dropdown-content {
