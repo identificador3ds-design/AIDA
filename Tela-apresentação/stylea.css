@@ -729,141 +729,160 @@ li a {
     opacity: 0.6;
 }
 
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: white;
+}
 
 @media (max-width: 768px) {
-    .team-grid {
-        flex-wrap: wrap;
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    .team-card {
-        flex: 1 1 140px;
-        max-width: 45%;
-        height: 250px;
-    }
-
-    .info h3 {
-        font-size: 1.1rem;
-    }
-
-    .info p {
-        font-size: 0.9rem;
+    .menu-toggle {
+        display: block;
     }
 }
 
 
-@media (max-width: 480px) {
-    .team-card {
-        max-width: 100%;
-        flex: 1 1 100%;
-        height: 320px;
-    }
+/* ===== AJUSTES GERAIS ===== */
+img {
+    max-width: 100%;
+    height: auto;
 }
 
-@media (max-width: 900px) {
-    .footer-container {
+section {
+    width: 90vw;
+    min-height: 100vh;
+    margin: 80px auto 0 auto;
+}
+
+/* ===== CORREÇÕES DE LAYOUT (DESKTOP SAFE) ===== */
+.card-func {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap; /* evita quebra feia */
+    position: static; /* remove deslocamentos problemáticos */
+    transform: none;
+    margin-top: 60px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+    flex-wrap: wrap; /* evita estourar */
+    margin: 0 auto;
+}
+
+.card-content {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+}
+
+.icons-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap; /* ESSENCIAL */
+    justify-content: center;
+    gap: 20px;
+}
+
+.team-card {
+    flex: 1 1 220px;
+    max-width: 260px;
+}
+/* ===== CORREÇÃO GLOBAL DE FLUXO ===== */
+section {
+    width: 90vw;
+    margin: 100px auto;
+    position: relative;
+    overflow: hidden; /* impede invasão */
+}
+
+
+
+
+
+/* remove deslocamentos antigos */
+.title-func,
+.subtitle-func {
+    position: static;
+    transform: none;
+    text-align: center;
+}
+
+/* ===== EQUIPE NÃO INVADIR ===== */
+.equipe {
+    margin-bottom: 100px;
+}
+
+/* ===== FERRAMENTA (FIX FORTE) ===== */
+.ferramenta {
+    position: relative;
+    z-index: 5;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* remove aquele deslocamento lateral bugado */
+.contentferr,
+.btnferr {
+    left: 0;
+    position: static;
+}
+
+/* botão centralizado corretamente */
+.btnferr {
+    margin-top: 40px;
+}
+
+/* ===== FOOTER PROTEÇÃO ===== */
+.footer {
+    position: relative;
+    z-index: 10;
+    margin-top: 80px;
+}
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+
+    .card-func {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 50px;
+        gap: 40px;
     }
 
-    .foot-column {
-        align-items: center;
+    .func-card {
+        width: 180px;
+        height: 180px;
     }
 
-    .foot-list li:hover {
-        transform: scale(1.1);
+    .title-func {
+        font-size: 2rem;
     }
 
-    .logo-footer {
-        width: 200px;
-    }
-}
-
-@media (max-width: 768px) {
-    header {
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 20px;
+    .subtitle-func {
+        font-size: 1.2rem;
     }
 
-    .logoaida {
-        position: static;
-        width: 80px;
-        height: auto;
+    .contentferr {
+        padding: 0 10px;
     }
 
-    .navbar {
-        display: none;
+    .titleferr {
+        font-size: 2rem;
     }
 
-    .dropdown {
-        position: static;
-        transform: none;
-    }
-
-    .dropdown-content {
-        right: 20px;
-        margin-left: 0;
-    }
-}
-
-
-@media (max-width: 768px) {
-    .title-tech {
-        top: 80px;
-        text-align: center;
-        padding: 0 15px;
-    }
-
-    .rolarpg {
-        bottom: 30px;
-        right: 30px;
-    }
-
-    .imgrpg {
-        width: 100px;
-        height: 100px;
-    }
-
-    section {
-        margin-top: 50px;
-    }
-}
-
-
-@media (max-width: 768px) {
-    .icons-section {
-        justify-content: center;
-        padding: 10px;
-        min-height: auto;
-    }
-
-    .icons-grid {
-        margin-right: 0;
-        width: 100%;
-        max-width: 350px;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-    }
-
-    .icon-wrapper {
-        border-radius: 12px;
-    }
-
-    .icon-wrapper img {
-        width: 50%;
-    }
-}
-
-
-@media (max-width: 380px) {
-    .icons-grid {
-        max-width: 280px;
-        gap: 8px;
+    .subtitleferr {
+        font-size: 1rem;
     }
 }
