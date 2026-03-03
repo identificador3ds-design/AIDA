@@ -24,6 +24,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Tenta recuperar o nome que o login guardou
+    const nomeSalvo = localStorage.getItem('usuarioNome');
+    const botaoUsuario = document.getElementById('nome-usuario2');
+
+    console.log("Nome recuperado do localStorage:", nomeSalvo); // Para teste no F12
+
+    if (nomeSalvo && botaoUsuario) {
+        // 2. Muda o texto do botão
+        botaoUsuario.innerText = `Olá, ${nomeSalvo}`;
+        gsap.from("#nome-usuario2", { opacity: 0, duration: 1, y: -10 });
+    } 
+
+    // 3. Lógica do botão Sair (Logout)
+    const btnSair = document.getElementById('btn-sair');
+    if (btnSair) {
+        btnSair.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('usuarioNome');
+            window.location.href = "../login/index-login.html";
+        });
+    }
+});
 
 let split = SplitText.create(".text", {
     type: "chars, words"
@@ -148,4 +171,13 @@ document.querySelectorAll('.navbar a').forEach(link => {
         nav.classList.remove('active');
         toggle.classList.remove('active');
     });
+});
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+
+    if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
 });
