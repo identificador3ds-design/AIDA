@@ -12,7 +12,20 @@
     <header class="cabecalho" style="background-color: #10403b;">
         <div class="headcontent">
             <img src="../img/LogoBranca.png" alt="" class="logoaida">
-            <div class="header-righy">
+            <nav class="navbar">
+                <a href="#sobre" class="ancoranav">Sobre</a>
+                <a href="#funcionamento" class="ancoranav">Funcionamento</a>
+                <a href="#ferramentaaida" class="ancoranav">Ferramenta</a>
+                <a href="#equipe" class="ancoranav">Equipe</a>
+                <div class="dropdown mobile-only">
+                    <button class="dropbtn" id="nome-usuario"></button>
+                    <div class="dropdown-content">
+                        <a href="../login/index-login.html" class="dropa" id="btn-sair">
+                            <img src="../img/arrow-right-from-bracket-solid-full.svg" alt="" class="logout">
+                            Sair
+                        </a>
+            </nav>
+            <div class="header-right">
                 <div class="dropdown">
                     <button class="dropbtn" id="nome-usuario"></button>
                     <div class="dropdown-content">
@@ -22,22 +35,14 @@
                         </a>
                     </div>
                 </div>
+                <button class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <button class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+
         </div>
-
-
-        <nav class="navbar">
-            <a href="#sobre" class="ancoranav">Sobre</a>
-            <a href="#funcionamento" class="ancoranav">Funcionamento</a>
-            <a href="#ferramentaaida" class="ancoranav">Ferramenta</a>
-            <a href="#equipe" class="ancoranav">Equipe</a>
-        </nav>
-
     </header>
     <div class="menu-overlay"></div>
     <main>

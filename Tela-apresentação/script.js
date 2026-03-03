@@ -135,67 +135,17 @@ const header = document.querySelector('header');
 
         lastScroll = currentScroll;
 });
-const toggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".navbar");
-const overlay = document.querySelector(".menu-overlay");
-const links = document.querySelectorAll(".ancoranav");
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.navbar');
 
-function closeMenu() {
-    nav.classList.remove("active");
-    toggle.classList.remove("active");
-    overlay.classList.remove("active");
-}
-
-toggle.addEventListener("click", () => {
-    nav.classList.toggle("active");
-    toggle.classList.toggle("active");
-    overlay.classList.toggle("active");
+toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    nav.classList.toggle('active');
 });
 
-/* fechar ao clicar no overlay */
-overlay.addEventListener("click", closeMenu);
-
-/* fechar ao clicar nos links */
-links.forEach(link => {
-    link.addEventListener("click", closeMenu);
-});
-/* ===== SCROLL SUAVE ===== */
-document.querySelectorAll('.ancoranav').forEach(link => {
-    link.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-
-        if (targetId.startsWith("#")) {
-            e.preventDefault();
-
-            const target = document.querySelector(targetId);
-
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
-        }
-    });
-});
-
-/* ===== LINK ATIVO AO SCROLL ===== */
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".ancoranav");
-
-window.addEventListener("scroll", () => {
-    let current = "";
-
-    sections.forEach(section => {
-        const top = section.offsetTop - 120;
-        const height = section.clientHeight;
-
-        if (scrollY >= top) {
-            current = section.getAttribute("id");
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active");
-        }
+document.querySelectorAll('.navbar a').forEach(link => {
+    link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        toggle.classList.remove('active');
     });
 });
