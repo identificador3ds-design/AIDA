@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     mostrarAlerta("Análise concluída!");
                     areaResultado.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else {
+                } 
+                else {
                     throw new Error(dados.mensagem);
                 }
             } catch (erro) {
