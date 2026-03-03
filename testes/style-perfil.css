@@ -58,7 +58,10 @@ body {
     transform: rotate(360deg);
   }
 }
-
+.ancora {
+  text-decoration: none;
+  color: #fff;
+}
 .card::after {
   content: "";
   position: absolute;
@@ -145,4 +148,8 @@ ul li:last-child {
   margin-top: 12px;
   padding-top: 12px;
   border-top: 1px solid rgb(255 255 255 / 8%);
+}
+.avatar {
+  filter:
+        invert(100);
 }
