@@ -25,22 +25,28 @@ header {
     width: 100%;
     height: 80px;
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
     z-index: 10;
     color: #BFBFBF;
-    
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Curva de animação mais elegante */
+
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Curva de animação mais elegante */
 }
 
 
 .header-hidden {
-    transform: translateY(-100%); /* Esconde o header para cima */
+    transform: translateY(-100%);
+    /* Esconde o header para cima */
 }
 
 .navbar {
     display: flex;
-    justify-content: center; 
-    gap: 60px; 
-    margin-left: 0; 
+    justify-content: center;
+    gap: 60px;
+    margin-left: 0;
     width: 100%;
 }
 
@@ -50,7 +56,7 @@ header {
     font-weight: bold;
     font-size: 1.2rem;
     margin-top: 28px;
-    position: relative; 
+    position: relative;
     display: inline-block;
     transition: color 0.3s linear;
 }
@@ -59,15 +65,15 @@ header {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -5px; 
+    bottom: -5px;
     width: 100%;
-    height: 2px; 
-    background-color: #8aa6a3; 
-    
+    height: 2px;
+    background-color: #8aa6a3;
+
     transform: scaleX(0);
-    transform-origin: right; 
-    
-    transition: transform 0.2s linear; 
+    transform-origin: right;
+
+    transition: transform 0.2s linear;
 }
 
 .ancoranav:hover {
@@ -75,8 +81,8 @@ header {
 }
 
 .ancoranav:hover::after {
-    transform: scaleX(1); 
-    transform-origin: left; 
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .ancoranav.active::after {
@@ -84,12 +90,14 @@ header {
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
-    position: absolute;
-    top: 28%;
-    left: 90%;
-    transform: translateX(-50%);
+    position: static;
+}
+
+/* cria um container pra direita */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .dropbtn {
@@ -145,11 +153,9 @@ header {
 }
 
 .logoaida {
-    width: 15%;
-    height: 60%;
-    position: absolute;
-    top: 17%;
-    left: 1%;
+    height: 40px;
+    width: auto;
+    position: static;
 }
 
 body {
@@ -161,6 +167,7 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+
 }
 
 
@@ -172,8 +179,10 @@ main {
 
 section {
     width: 90vw;
-    height: 100vh;
-    margin-top: 100px;
+    min-height: 100vh;
+    height: auto;
+    margin: 100px auto;
+
 }
 
 .content {
@@ -183,7 +192,28 @@ section {
     flex-direction: column;
     min-height: 100vh;
     padding: 20px;
-    gap: 60px;
+    gap: 40px;
+}
+
+.text,
+.title-func,
+.title-tech,
+.title-equipe,
+.titleferr {
+    letter-spacing: -1px;
+}
+
+button,
+a,
+.card-content,
+.team-card {
+    transition: all 0.3s ease;
+}
+
+
+.card-content:hover,
+.team-card:hover {
+    transform: translateY(-6px);
 }
 
 .imgsobre {
@@ -195,6 +225,7 @@ section {
 
 .text {
     font-size: 4rem;
+    padding: 60px;
 }
 
 .subtitle {
@@ -226,20 +257,30 @@ section {
 }
 
 .func-card {
-    background: linear-gradient(135deg #e2dfdf, #dbd8d8);
-    border-radius: 60%;
+    background: linear-gradient(145deg, #ffffff22, #ffffff10);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.35s ease;
     padding: 50px;
     color: #081f1c;
-    box-shadow: 0 10px 30px #504f4f44;
     text-shadow: 0 10px 30px #01010144;
-    transition: transform 0.5s ease;
-    backdrop-filter: blur(10px);
-    max-width: 300px;
-    max-height: 300px;
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
 }
-
+.info-func p {
+    font-size: 0.85rem;
+    line-height: 1.2;
+}
+.info-func h3 {
+    font-size: 1rem;
+}
 .title-func {
     display: flex;
     justify-content: center;
@@ -263,24 +304,25 @@ section {
 }
 
 .info-func img {
-    margin: 5px 0 10px 55px;
-    width: 25%;
-    height: 25%;
+    margin-bottom: 10px;
+    width: 40px;
+    height: auto;
 }
 
 .func-card:hover {
-    transform: scale(1.04);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .card-func {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
-    position: relative;
-    top: 20%;
-    left: 40%;
-    transform: translateX(-35%);
+    gap: 40px;
+    flex-wrap: wrap;
+
+    position: static;
+    transform: none;
 }
 
 .number {
@@ -288,8 +330,9 @@ section {
     justify-content: center;
     align-items: center;
     margin-top: 31px;
-    font-size: 1.5rem;
-    opacity: 0.2;
+    opacity: 0.15;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
     font-weight: bold;
 }
 
@@ -298,14 +341,15 @@ section {
     justify-content: center;
     align-items: center;
     margin-top: 11px;
-    font-size: 1.5rem;
-    opacity: 0.2;
+    opacity: 0.15;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
     font-weight: bold;
 }
 
 
 .imgrpg {
-    width: 150px; 
+    width: 150px;
     height: auto;
     animation: rolar 12s linear infinite;
 }
@@ -317,8 +361,9 @@ section {
     transform: translate(-50%, -50%);
     color: #4C5958;
 }
+
 .seta img {
-    width: 30px; 
+    width: 30px;
     height: auto;
 }
 
@@ -340,6 +385,10 @@ section {
     position: relative;
     top: 200px;
     font-size: 3rem;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 40px;
+    position: static;
 
 }
 
@@ -355,15 +404,20 @@ section {
     padding: 20px;
     overflow: hidden;
     gap: 5px;
+    z-index: 1;
+    margin-top: 40px;
+
 }
-.cards{
+
+.cards {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 150px;
     margin-right: 150px;
 }
-.card-content{
+
+.card-content {
     border: 0.5px solid #10403b;
     padding: 24px;
     border-radius: 32px;
@@ -375,24 +429,29 @@ section {
     height: 300px;
     transition: transform 0.5s ease;
 }
+
 .card-content h3 {
     font-size: 1.39rem;
 }
+
 .card-content p {
     font-size: 1.05rem;
 }
-.card-content:hover{
+
+.card-content:hover {
     transform: scale(1.05);
     background: transparent;
     backdrop-filter: blur(40px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
-.imgtech{
+
+.imgtech {
     filter:
         invert(12%) sepia(94%) saturate(1234%) hue-rotate(140deg) brightness(95%) contrast(92%);
     width: 15%;
     height: 40%;
 }
+
 .icons-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -463,36 +522,52 @@ section {
     align-items: center;
     z-index: 5;
     opacity: 0.8;
-    transition: opacity 0.3s ease, visibility 0.3s ease; 
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 @media (max-width: 1024px) {
-    .rolarpg { bottom: 30px; right: 30px; }
-    .imgrpg { width: 120px; }
+    .rolarpg {
+        bottom: 30px;
+        right: 30px;
+    }
+
+    .imgrpg {
+        width: 120px;
+    }
 }
 
 @media (max-width: 768px) {
-    .rolarpg { bottom: 20px; right: 20px; }
-    .imgrpg { width: 90px; }
-    .seta img { width: 20px; }
+    .rolarpg {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .imgrpg {
+        width: 90px;
+    }
+
+    .seta img {
+        width: 20px;
+    }
 }
 
 .gsap-reveal {
     visibility: visible !important;
 }
+
 .rolarpg.hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
+
 .title-equipe {
     font-size: 3rem;
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 20px;
     width: 100%;
     left: 5%;
-    position: relative;
+    position: static !important;
+    text-align: center;
+    margin: 0 auto 30px auto;
 }
 
 .team-grid {
@@ -502,16 +577,17 @@ section {
     align-items: center;
     flex-wrap: nowrap;
     padding: 2rem;
-    width: 90%;
+    width: 100%;
+    max-width: 1100px;
     margin: 0 auto;
-    left: 5%;
-    position: relative;
+    position: static !important;
+    left: auto !important;
 }
 
 .team-card {
     position: relative;
-    flex: 1 1 280px;
-    max-width: 300px;
+    flex: 1 1 250px;
+    max-width: 260px;
     min-width: 150px;
     height: 380px;
     overflow: hidden;
@@ -580,13 +656,15 @@ section {
     font-weight: 400;
 }
 
-.titleferr{
+.titleferr {
     font-size: 3rem;
     margin-bottom: 50px;
 }
-.subtitleferr{
+
+.subtitleferr {
     font-size: 1.5rem;
 }
+
 .contentferr {
     display: flex;
     justify-content: center;
@@ -604,6 +682,7 @@ section {
     left: 5%;
     margin-top: 150px;
 }
+
 .ancoraferr {
     text-decoration: none;
 }
@@ -729,141 +808,365 @@ li a {
     opacity: 0.6;
 }
 
+/* ===== HEADER MOBILE ===== */
+
+/* ===== MENU TOGGLE PREMIUM ===== */
+
+.menu-toggle {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 90;
+}
+.ancoranav.active {
+    color: #8aa6a3;
+}
+
+.ancoranav.active::after {
+    transform: scaleX(1);
+}
+
+/* hover */
+.menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+/* ===== ANIMAÇÃO SEQUENCIAL ===== */
+
+.navbar a {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+/* quando abre */
+.navbar.active a {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* delay em cascata */
+.navbar.active a:nth-child(1) { transition: 0.3s 0.1s; }
+.navbar.active a:nth-child(2) { transition: 0.3s 0.2s; }
+.navbar.active a:nth-child(3) { transition: 0.3s 0.3s; }
+.navbar.active a:nth-child(4) { transition: 0.3s 0.4s; }
+
+/* clique */
+.menu-toggle:active {
+    transform: scale(0.95);
+}
+
+/* container das linhas */
+.menu-toggle span {
+    position: absolute;
+    width: 22px;
+    height: 2.5px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.35s ease;
+}
+
+/* linhas */
+.menu-toggle span:nth-child(1) {
+    transform: translateY(-7px);
+}
+
+.menu-toggle span:nth-child(2) {
+    transform: translateY(0);
+}
+
+.menu-toggle span:nth-child(3) {
+    transform: translateY(7px);
+}
+
+/* ===== ANIMAÇÃO PARA X ===== */
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+@media (min-width: 769px) {
+
+    .navbar {
+        display: flex !important;
+        position: static !important;
+        transform: none !important;
+        height: auto !important;
+        width: auto !important;
+        flex-direction: row !important;
+        justify-content: center;
+        align-items: center;
+        background: transparent !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .navbar a {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .menu-toggle {
+        display: none !important;
+    }
+
+    .menu-overlay {
+        display: none !important;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 260px;
+        background: #10403b;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+
+        transform: translateX(100%);
+        transition: transform 0.4s ease;
+    }
+
+    .navbar.active {
+        transform: translateX(0);
+    }
+
+     .menu-toggle {
+        display: flex !important;
+    }
+}
+
+/* ===== CORREÇÕES SEGURAS (NÃO QUEBRA DESIGN) ===== */
+
+/* remove posicionamentos que causam quebra */
+.card-func {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+
+    position: static !important;
+    left: auto !important;
+    transform: none !important;
+    margin-top: 60px;
+}
+
+.func-card {
+    width: 220px;
+    height: 220px;
+    flex-shrink: 0;
+}
+
+/* funcionamento centralizado */
+.title-func,
+.subtitle-func {
+    position: static;
+    transform: none;
+    text-align: center;
+}
+
+/* ===== TECNOLOGIAS (APARECER CARDS) ===== */
+.icons-section {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+}
+
+.cards {
+    flex-wrap: wrap !important;
+    gap: 30px !important;
+    margin: 0 auto !important;
+}
+
+.card-content {
+    height: auto !important;
+    /* REMOVE CORTE */
+}
+
+/* garante que os ícones aparecem */
+.icons-grid {
+    margin: 0 auto !important;
+}
+
+/* ===== EQUIPE (PARAR INVASÃO) ===== */
+.team-grid {
+    flex-wrap: wrap !important;
+    justify-content: center;
+}
+
+.team-card {
+    flex: 1 1 250px;
+    max-width: 280px;
+}
+
+/* ===== FERRAMENTA (PARAR SOBREPOSIÇÃO) ===== */
+.ferramenta {
+    position: relative;
+    z-index: 5;
+    margin-top: 120px;
+}
+
+/* remove deslocamento lateral bugado */
+.contentferr,
+.btnferr {
+    position: static !important;
+    left: auto !important;
+}
+
+/* ===== FOOTER RESPEITAR LAYOUT ===== */
+.footer {
+    margin-top: 80px;
+    position: relative;
+    z-index: 10;
+}
+
+/* ===== RESPONSIVIDADE REAL ===== */
 
 @media (max-width: 768px) {
+
+    /* NAV */
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* TEXTOS */
+    .text {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .subtitle {
+        width: 90%;
+        text-align: center;
+    }
+
+    /* SOBRE */
+    .cards-sobre {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* FUNCIONAMENTO */
+    .card-func {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .func-card {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* TECNOLOGIAS (ISSO RESOLVE SEU PROBLEMA PRINCIPAL) */
+    .icons-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin: 0;
+    }
+
+    .card-content {
+        width: 90%;
+        height: auto;
+    }
+
+    .icons-grid {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 0 auto;
+    }
+
+    /* EQUIPE */
     .team-grid {
-        flex-wrap: wrap;
-        gap: 1rem;
-        padding: 1rem;
+        flex-direction: column;
+        align-items: center;
     }
 
     .team-card {
-        flex: 1 1 140px;
-        max-width: 45%;
-        height: 250px;
+        width: 90%;
+        max-width: 300px;
     }
 
-    .info h3 {
-        font-size: 1.1rem;
+    /* FERRAMENTA */
+    .contentferr,
+    .btnferr {
+        position: static;
+        left: 0;
+        text-align: center;
     }
 
-    .info p {
-        font-size: 0.9rem;
+    .btnferr {
+        margin-top: 40px;
     }
+
 }
 
+@media (max-width: 768px) {
 
-@media (max-width: 480px) {
-    .team-card {
-        max-width: 100%;
-        flex: 1 1 100%;
-        height: 320px;
-    }
-}
-
-@media (max-width: 900px) {
     .footer-container {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 50px;
+        gap: 30px;
     }
 
     .foot-column {
         align-items: center;
     }
 
-    .foot-list li:hover {
-        transform: scale(1.1);
+    .foot-title {
+        border: none;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
     }
 
-    .logo-footer {
-        width: 200px;
-    }
-}
-
-@media (max-width: 768px) {
-    header {
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 20px;
-    }
-
-    .logoaida {
-        position: static;
-        width: 80px;
-        height: auto;
-    }
-
-    .navbar {
-        display: none;
-    }
-
-    .dropdown {
-        position: static;
+    .foot-list li {
+        font-size: 1rem;
         transform: none;
     }
 
-    .dropdown-content {
-        right: 20px;
-        margin-left: 0;
-    }
-}
-
-
-@media (max-width: 768px) {
-    .title-tech {
-        top: 80px;
-        text-align: center;
-        padding: 0 15px;
+    .foot-list li:hover {
+        transform: none;
     }
 
-    .rolarpg {
-        bottom: 30px;
-        right: 30px;
+    .logo-footer {
+        width: 180px;
     }
 
-    .imgrpg {
-        width: 100px;
-        height: 100px;
-    }
-
-    section {
-        margin-top: 50px;
-    }
-}
-
-
-@media (max-width: 768px) {
-    .icons-section {
-        justify-content: center;
-        padding: 10px;
-        min-height: auto;
-    }
-
-    .icons-grid {
-        margin-right: 0;
-        width: 100%;
-        max-width: 350px;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-    }
-
-    .icon-wrapper {
-        border-radius: 12px;
-    }
-
-    .icon-wrapper img {
-        width: 50%;
-    }
-}
-
-
-@media (max-width: 380px) {
-    .icons-grid {
-        max-width: 280px;
-        gap: 8px;
+    .footer-rights {
+        margin-top: 20px;
     }
 }

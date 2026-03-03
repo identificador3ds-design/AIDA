@@ -12,17 +12,24 @@
     <header class="cabecalho" style="background-color: #10403b;">
         <div class="headcontent">
             <img src="../img/LogoBranca.png" alt="" class="logoaida">
-            <div class="dropdown">
-                <button class="dropbtn" id="nome-usuario"></button>
-                <div class="dropdown-content">
-                    <a href="../login/index-login.html" class="dropa" id="btn-sair">
-                        <img src="../img/arrow-right-from-bracket-solid-full.svg" alt="" class="logout">
-                        Sair
-                    </a>
+            <div class="header-righy">
+                <div class="dropdown">
+                    <button class="dropbtn" id="nome-usuario"></button>
+                    <div class="dropdown-content">
+                        <a href="../login/index-login.html" class="dropa" id="btn-sair">
+                            <img src="../img/arrow-right-from-bracket-solid-full.svg" alt="" class="logout">
+                            Sair
+                        </a>
+                    </div>
                 </div>
             </div>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        </div>
+
 
         <nav class="navbar">
             <a href="#sobre" class="ancoranav">Sobre</a>
@@ -32,6 +39,7 @@
         </nav>
 
     </header>
+    <div class="menu-overlay"></div>
     <main>
         <div class="content" id="sobre">
             <h1 class="text">O que é a AIDA?
@@ -78,12 +86,14 @@
             <div class="card-content">
                 <img src="../img/code-solid-full.svg" alt="" class="imgtech">
                 <h3>Tecnologias</h3>
-                <p>Utilizamos as HTML, CSS, JS, React, Python, Git, GSAP e o banco de dados Firebase para criar a nossa ferramenta.</p>
+                <p>Utilizamos as HTML, CSS, JS, React, Python, Git, GSAP e o banco de dados Firebase para criar a nossa
+                    ferramenta.</p>
             </div>
             <div class="card-content">
                 <img src="../img/file-code-solid-full.svg" alt="" class="imgtech">
                 <h3>Métodos</h3>
-                <p>Para a detecção de inteligencia artificial nas fotos, utilizamos alguns metodos de IA forense como FFT e PSEM.</p>
+                <p>Para a detecção de inteligencia artificial nas fotos, utilizamos alguns metodos de IA forense como
+                    FFT e PSEM.</p>
             </div>
         </div>
         <div class="icons-grid">
@@ -191,10 +201,12 @@
     <section class="ferramenta" id="ferramentaaida">
         <div class="contentferr">
             <h1 class="titleferr">Experimente o AIDA agora</h1>
-            <p class="subtitleferr">Faça o upload de qualquer imagem e descubra em segundos se ela foi gerada por inteligência artificial.</p>
+            <p class="subtitleferr">Faça o upload de qualquer imagem e descubra em segundos se ela foi gerada por
+                inteligência artificial.</p>
         </div>
         <div class="btnferr">
-           <a href="../Ferramenta/index-seleciona.html" class="ancoraferr"><button class="btnferra">Acessar a ferramenta <img src="../img/Vector 5(2).svg" alt="" class="setabtn"></button></a>
+            <a href="../Ferramenta/index-seleciona.html" class="ancoraferr"><button class="btnferra">Acessar a
+                    ferramenta <img src="../img/Vector 5(2).svg" alt="" class="setabtn"></button></a>
         </div>
     </section>
     <footer class="footer">
