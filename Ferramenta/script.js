@@ -1,23 +1,30 @@
-// No seu script.js da pasta "Ferramenta"
-const btnAcao = document.getElementById('btnAcaoSelecionar');
-const inputFile = document.getElementById('inputFileBotao');
+document.addEventListener('DOMContentLoaded', () => {
+    const btnAcaoSelecionar = document.getElementById('btnAcaoSelecionar');
+    const inputFileBotao = document.getElementById('inputFileBotao');
 
-btnAcao.addEventListener('click', () => {
-    inputFile.click();
-});
+    if (btnAcaoSelecionar && inputFileBotao) {
+        // Abre a janela de seleção de arquivo
+        btnAcaoSelecionar.addEventListener('click', () => {
+            inputFileBotao.click();
+        });
 
-inputFile.addEventListener('change', (event) => {
-    if (event.target.files.length > 0) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onload = (e) => {
-            // Salva os dados da imagem no navegador
-            localStorage.setItem('AIDA_Image_Preview', e.target.result);
-            // Vai para a próxima tela
-            window.location.href = "../Ferramenta-Analise/index-analise.html";
-        };
-
-        reader.readAsDataURL(file);
+        // Quando o usuário escolhe a imagem
+        inputFileBotao.addEventListener('change', () => {
+            const arquivo = inputFileBotao.files[0];
+            if (arquivo) {
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    // SALVA A IMAGEM (Mesma chave que a outra tela procura)
+                    localStorage.setItem('AIDA_ImagemSelecionada', e.target.result);
+                    
+                    // DIRECIONA PARA A TELA DE ANÁLISE
+                    // Ajuste o caminho abaixo se a pasta for diferente
+                    window.location.href = "../Ferramenta-Analise/index-analise.html"; 
+                };
+                
+                reader.readAsDataURL(arquivo);
+            }
+        });
     }
 });
