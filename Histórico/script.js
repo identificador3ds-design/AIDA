@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const carregarHistorico = async () => {
         lista.innerHTML = '<div class="spinner"></div><p style="text-align:center; width:100%; color:#c5dddb;">Buscando evidências na nuvem...</p>';
 
-        // 1. Verifica quem está logado
+        //Verificar quem está logado
         const { data: { user } } = await _supabase.auth.getUser();
 
         if (!user) {
@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        // 2. Busca apenas as análises DESSA pessoa, ordenado do mais novo pro mais velho
         const { data: registros, error } = await _supabase
             .from('historico_analises')
             .select('*')
@@ -41,10 +40,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        lista.innerHTML = ''; // Limpa o carregamento
+        lista.innerHTML = '';
         
         registros.forEach((item, index) => {
-            // Formata a data do banco (que vem em padrão ISO)
             const dataFormatada = new Date(item.data_analise).toLocaleString('pt-BR');
 
             const card = document.createElement('div');
@@ -76,16 +74,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.querySelector('.btn-fechar-modal').onclick = () => modal.style.display = 'none';
     window.onclick = (e) => { if (e.target == modal) modal.style.display = 'none'; };
 
-    // Limpar Histórico na Nuvem
     btnLimpar.onclick = async () => {
         if(confirm("Deseja apagar TODOS os seus registros periciais da nuvem? Esta ação é irreversível.")) {
             const { data: { user } } = await _supabase.auth.getUser();
             
-            // Deleta do Supabase
             await _supabase
                 .from('historico_analises')
                 .delete()
-                .eq('user_id', user.id); // Garante que deleta só os dele
+                .eq('user_id', user.id); 
             
             location.reload();
         }

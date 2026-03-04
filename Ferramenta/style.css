@@ -1,4 +1,3 @@
-/* Reset básico e fonte global */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +5,6 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Configuração do corpo para ocupar a tela toda */
 body {
   margin: 0;
   background: #0c2f2b;
@@ -22,15 +20,12 @@ body {
   background-attachment: fixed;
 }
 
-
-
-/* Wrapper principal que organiza os elementos verticalmente */
 .main-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centraliza o bloco todo verticalmente */
-    min-height: 100vh; /* Garante que ocupe a altura total da tela */
+    justify-content: center; 
+    min-height: 100vh; 
     width: 100%;
 }
 
@@ -39,47 +34,42 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px; /* Espaço entre o logo e o card */
+    margin-bottom: 20px; 
 }
 
 .logo-aida {
     padding-top: 20px;
-    width: 350px; /* Tamanho original que você queria */
+    width: 350px; 
     height: auto;
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
-    /* Remova: position, top, left, transform e margin-top */
+
 }
 
 /* --- Área Central (Card) --- */
 .center-stage {
-    /* O PULO DO GATO: Ocupa todo o espaço vertical restante */
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    /* Centraliza horizontalmente */
     align-items: center;
-    /* Centraliza verticalmente no espaço que sobrou */
     padding-bottom: 50px;
-    /* Equilíbrio visual na parte inferior */
+
 }
 
 /* Estilo do Card */
 .card-selecao {
     background-color: rgba(0, 0, 0, 0.18);
-    padding: 60px 80px; /* Seus valores originais */
+    padding: 60px 80px; 
     border-radius: 25px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
     text-align: center;
-    width: 500px; /* Forçamos a largura original */
-    max-width: 90%; /* Segurança para telas pequenas */
+    width: 500px; 
+    max-width: 90%; 
     backdrop-filter: blur(5px);
-    
-    /* Remova: position, top, left e transform */
+
 }
 
 .texto-instrucao {
     font-size: 1.25rem;
-    /* Aumentei um pouco para destaque */
     font-weight: 400;
     margin-bottom: 35px;
     letter-spacing: 0.5px;
@@ -89,7 +79,6 @@ body {
 .btn-estilizado {
     background: linear-gradient(135deg, #134943, #127369);
     color: #c5dddb;
-    /* Cor do texto combinando com o tom mais escuro do fundo */
     border: none;
     padding: 15px 45px;
     border-radius: 12px;
@@ -98,7 +87,6 @@ body {
     letter-spacing: 1.5px;
     cursor: pointer;
     transition: all 0.3s ease;
-    /* Transição suave para o hover */
     box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2);
     border: 0.1px solid #127369;
 }
@@ -106,29 +94,24 @@ body {
 /* Efeitos de interação no botão */
 .btn-estilizado:hover {
     transform: translateY(-3px);
-    /* Levanta ligeiramente */
 }
 
 .btn-estilizado:active {
     transform: translateY(0);
-    /* Volta ao normal ao clicar */
 }
 
 /* --- Responsividade (Celulares e Tablets pequenos) --- */
 @media (max-width: 768px) {
     .top-header {
         padding-top: 30px;
-        /* Menos espaço no topo em telas pequenas */
     }
 
     .logo-aida {
         max-width: 220px;
-        /* Logo menor no celular */
     }
 
     .card-selecao {
         padding: 40px 30px;
-        /* Card mais compacto */
     }
 
     .texto-instrucao {

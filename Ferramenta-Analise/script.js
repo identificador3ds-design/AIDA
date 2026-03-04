@@ -2,7 +2,6 @@ const supabaseUrl = 'https://nwzijdudhemuibsyzpub.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53emlqZHVkaGVtdWlic3l6cHViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIwMjk5MTAsImV4cCI6MjA4NzYwNTkxMH0.aDHymYEKtyY5m2eaOHoBy4QRpaAvtafi_PVDtrL9gQc';
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-// Função para converter imagem para o Supabase Storage
 function base64ToBlob(base64, mime) {
     const byteString = atob(base64.split(',')[1]);
     const ab = new ArrayBuffer(byteString.length);
@@ -35,10 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const placeholderImagem = document.getElementById('placeholderImagem');
     const btnVerificar = document.getElementById('btnVerificar');
 
-    // 1. PROTEÇÃO: BUSCA A IMAGEM SALVA
     const imagemSalva = localStorage.getItem('AIDA_ImagemSelecionada');
 
-    // Se entrar na tela de análise sem imagem, volta para a seleção
     if (!imagemSalva) {
         window.location.href = "../Selecionar-Imagem/index-seleciona.html";
         return;
@@ -128,8 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             console.error("Erro ao salvar na tabela:", dbError.message);
                         } else {
                             console.log("Salvo com sucesso no banco de dados!");
-                            
-                            // 2. LIMPEZA: APAGA A IMAGEM DO CACHE APÓS O SUCESSO
+                        
                             localStorage.removeItem('AIDA_ImagemSelecionada');
                         }
 

@@ -12,9 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (arquivo) {
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    // Guarda na memória do navegador
                     localStorage.setItem('AIDA_ImagemSelecionada', e.target.result);
-                    // Vai para a tela de análise
                     window.location.href = "../Ferramenta-Analise/index-analise.html"; 
                 };
                 reader.readAsDataURL(arquivo);

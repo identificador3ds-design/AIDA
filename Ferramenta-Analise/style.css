@@ -188,7 +188,7 @@ body::before {
     filter: brightness(1.1);
 }
 
-/* Botão Secundário (TROCAR) - Baseado no modelo do Figma */
+/* Botão Secundário (TROCAR)*/
 .btn-secundario {
     background: rgba(255, 255, 255, 0.08);
     color: #c5dddb;
@@ -221,7 +221,7 @@ body::before {
 
 /* Estilo de cada alerta individual */
 .toast-card {
-    background: rgba(18, 115, 105, 0.9); /* O verde da sua paleta */
+    background: rgba(18, 115, 105, 0.9); 
     color: white;
     padding: 16px 25px;
     border-radius: 12px;
@@ -230,8 +230,6 @@ body::before {
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     font-weight: 600;
     min-width: 250px;
-    
-    /* Animação de entrada */
     animation: slideIn 0.5s ease forwards;
     cursor: pointer;
 }
