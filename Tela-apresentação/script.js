@@ -181,3 +181,21 @@ window.addEventListener('scroll', () => {
         header.classList.remove('scrolled');
     }
 });
+function mensagemZap() {
+    console.log("Botão WhatsApp clicado!"); 
+    
+    // Criando a variável mensagem
+    let mensagem = "";
+    
+    mensagem += "Olá\n";
+    mensagem += "Sua foto foi analisada\n";
+    mensagem += "A veracidade dela é de 85%\n";
+    mensagem += "Para analisar mais imagens acesse nosso site";
+
+    const numeroTelefone = "5519982593410"; 
+    
+    const url = `https://wa.me/${numeroTelefone}?text=${encodeURIComponent(mensagem)}`;
+    
+    console.log("URL Gerada:", url);
+    window.open(url, '_blank');
+}
