@@ -1,4 +1,18 @@
-// 1. Função do Alerta
+const supabaseUrl = 'https://nwzijdudhemuibsyzpub.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53emlqZHVkaGVtdWlic3l6cHViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIwMjk5MTAsImV4cCI6MjA4NzYwNTkxMH0.aDHymYEKtyY5m2eaOHoBy4QRpaAvtafi_PVDtrL9gQc';
+const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+// Função para converter imagem para o Supabase Storage
+function base64ToBlob(base64, mime) {
+    const byteString = atob(base64.split(',')[1]);
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ab], { type: mime });
+}
+
 function mostrarAlerta(mensagem) {
     let container = document.getElementById('toast-container');
     if (!container) {
@@ -6,30 +20,31 @@ function mostrarAlerta(mensagem) {
         container.id = 'toast-container';
         document.body.appendChild(container);
     }
-
     const toast = document.createElement('div');
     toast.className = 'toast-card';
     toast.innerText = mensagem;
-
     container.appendChild(toast);
-
     setTimeout(() => {
         toast.classList.add('fadeOut');
         setTimeout(() => toast.remove(), 500);
     }, 4000);
-
-    toast.onclick = () => toast.remove();
 }
 
-// 2. Lógica Principal
 document.addEventListener('DOMContentLoaded', () => {
     const imagemPreview = document.getElementById('imagemPreview');
     const placeholderImagem = document.getElementById('placeholderImagem');
     const btnVerificar = document.getElementById('btnVerificar');
 
+    // 1. PROTEÇÃO: BUSCA A IMAGEM SALVA
     const imagemSalva = localStorage.getItem('AIDA_ImagemSelecionada');
 
-    if (imagemSalva && imagemPreview) {
+    // Se entrar na tela de análise sem imagem, volta para a seleção
+    if (!imagemSalva) {
+        window.location.href = "../Selecionar-Imagem/index-seleciona.html";
+        return;
+    }
+
+    if (imagemPreview) {
         imagemPreview.src = imagemSalva;
         imagemPreview.hidden = false;
         if (placeholderImagem) placeholderImagem.hidden = true;
@@ -49,16 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             areaResultado.style.display = 'none';
             loading.style.display = 'block';
-            loading.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
             try {
                 const response = await fetch('http://localhost:5000/analisar', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        imagem: imagemBase64,
-                        metodo: metodoSelecionado 
-                    })
+                    body: JSON.stringify({ imagem: imagemBase64, metodo: metodoSelecionado })
                 });
 
                 const dados = await response.json();
@@ -71,22 +82,63 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('porcentagemIA').innerText = dados.probabilidade;
                     document.getElementById('tituloMetodo').innerText = dados.metodo;
 
+                    const textoElement = document.getElementById('textoMetodo');
                     if (dados.energia === "N/A (Assinatura Digital)") {
-                        document.getElementById('textoMetodo').innerText = `Identificado via metadados: ${dados.metodo}. Esta imagem possui assinaturas digitais explícitas de IA.`;
+                        textoElement.innerText = `Identificado via metadados: ${dados.metodo}. Esta imagem possui assinaturas digitais explícitas de IA.`;
                     } else if (dados.energia === "N/A (Marca Visual)") {
-                        document.getElementById('textoMetodo').innerText = `Identificado visualmente: ${dados.metodo}. Foi detectada a logomarca padrão de IA no canto da imagem.`;
+                        textoElement.innerText = `Identificado visualmente: ${dados.metodo}. Foi detectada a logomarca padrão de IA no canto da imagem.`;
                     } else {
-                        document.getElementById('textoMetodo').innerText = `A análise técnica de frequências detectou uma energia de ${dados.energia}.`;
+                        textoElement.innerText = `A análise técnica de frequências detectou uma energia de ${dados.energia}.`;
                     }
-                    
+
                     mostrarAlerta("Análise concluída!");
-                    areaResultado.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } 
-                else {
-                    throw new Error(dados.mensagem);
+
+                    const { data: { user } } = await _supabase.auth.getUser();
+
+                    if (user) {
+                        console.log("Usuário logado detectado, iniciando salvamento...");
+                        
+                        const blob = base64ToBlob(imagemBase64, 'image/png');
+                        const nomeArquivo = `${user.id}/${Date.now()}_original.png`;
+
+                        const { data: uploadData, error: uploadError } = await _supabase.storage
+                            .from('evidencias')
+                            .upload(nomeArquivo, blob);
+
+                        if (uploadError) {
+                            console.error("Erro no Upload Storage:", uploadError.message);
+                            return;
+                        }
+
+                        const { data: { publicUrl } } = _supabase.storage
+                            .from('evidencias')
+                            .getPublicUrl(nomeArquivo);
+
+                        const { error: dbError } = await _supabase
+                            .from('historico_analises')
+                            .insert([{
+                                user_id: user.id,
+                                metodo: dados.metodo,
+                                probabilidade: dados.probabilidade,
+                                imagem_original: publicUrl,
+                                resultado_img: dados.imagem_fft
+                            }]);
+
+                        if (dbError) {
+                            console.error("Erro ao salvar na tabela:", dbError.message);
+                        } else {
+                            console.log("Salvo com sucesso no banco de dados!");
+                            
+                            // 2. LIMPEZA: APAGA A IMAGEM DO CACHE APÓS O SUCESSO
+                            localStorage.removeItem('AIDA_ImagemSelecionada');
+                        }
+
+                    } else {
+                        console.warn("Nenhum usuário logado. O histórico não será salvo.");
+                    }
                 }
             } catch (erro) {
-                loading.style.display = 'none';
+                if (loading) loading.style.display = 'none';
                 mostrarAlerta("Erro ao processar imagem.");
             }
         });
