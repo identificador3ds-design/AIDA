@@ -1,7 +1,0 @@
-Flask
-flask-cors
-numpy
-opencv-python-headless
-io
-base64
-matplotlib.pyplot
